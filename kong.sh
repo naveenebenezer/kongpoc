@@ -40,6 +40,14 @@ aws eks update-kubeconfig --region us-east-1 --name my-eks-cluster
 ## after adding kubectl context
 helm repo add kong https://charts.konghq.com &> /dev/null || true
 helm repo update
+kubectl create namespace kong
+
+helm install kong kong/kong \
+  --namespace kong \
+  --set ingressController.installCRDs=false \
+  --set proxy.type=LoadBalancer
+  
+  
 
 echo
 echo
