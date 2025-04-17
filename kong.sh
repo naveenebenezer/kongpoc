@@ -23,6 +23,17 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 
+eksctl create cluster \
+  --name my-eks-cluster \
+  --region us-east-1 \
+  --nodegroup-name linux-nodes \
+  --node-type t3.medium \
+  --nodes 2 \
+  --nodes-min 1 \
+  --nodes-max 3 \
+  --managed
+
+sleep 1200
 
 aws eks update-kubeconfig --region us-east-1 --name my-eks-cluster
 
