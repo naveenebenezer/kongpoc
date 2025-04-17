@@ -23,5 +23,12 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 
+
+aws eks update-kubeconfig --region us-east-1 --name my-eks-cluster
+
+## after adding kubectl context
+helm repo add kong https://charts.konghq.com &> /dev/null || true
+helm repo update
+
 echo
 echo
